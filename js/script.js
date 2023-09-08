@@ -11,7 +11,7 @@ function initializeCheckboxWidth(labels, inputs, spans, bg){
 
     bg.addEventListener("click", (event) => {labelWidthBackward()});
     
-    labelList.forEach((item)  => item.addEventListener("transitionstart", (event) => changeLabelWidth(item)));
+    labelList.forEach((label)  => label.addEventListener("transitionstart", (event) => changeLabelWidth(label)));
 
     texts.forEach((item) => spanListWidth.push(item.getBoundingClientRect().width + 55));
 
@@ -35,7 +35,7 @@ function initializeCheckboxWidth(labels, inputs, spans, bg){
 
     function lastBlueCheckOnTheRight(label) {
         const viewportWidth = window.innerWidth;
-        
+
         if (label.id == "sixth-blue-check-label" && viewportWidth < 1600) {
             if (checkedBox) {
                 label.style.left = `${viewportWidth - labelWidth - 25}px`;
@@ -51,9 +51,7 @@ function initializeCheckboxWidth(labels, inputs, spans, bg){
     function labelWidthBackward() {
         for (let checkbox of inputList) {
             checkbox.checked = false;
-            if (checkbox.checked == false) {
-                labelList[inputList.indexOf(checkbox)].style.width = "41px";
-            }
+            labelList[inputList.indexOf(checkbox)].style.width = "41px";
         }
     }
 }
